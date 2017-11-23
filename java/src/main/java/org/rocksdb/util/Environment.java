@@ -60,7 +60,8 @@ public class Environment {
       final String arch = is64Bit() ? "64" : "32";
       return String.format("%sjni-solaris%s", name, arch);
     } else if (isWindows() && is64Bit()) {
-      return String.format("%sjni-win64", name);
+	  final String arch = is64Bit() ? "64" : "32";
+      return String.format("%sjni-win%s", name, arch);
     }
 
     throw new UnsupportedOperationException(String.format("Cannot determine JNI library name for ARCH='%s' OS='%s' name='%s'", ARCH, OS, name));
